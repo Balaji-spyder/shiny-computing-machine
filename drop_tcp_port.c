@@ -1,12 +1,10 @@
 #include <linux/bpf.h>
-#include <linux/if_ether.h> // <-- For ETH_P_IP
+#include <linux/if_ether.h> 
 #include <linux/ip.h>
 #include <linux/tcp.h>
-#include <linux/in.h>     // <-- For IPPROTO_TCP
+#include <linux/in.h>  
 #include <bpf/bpf_helpers.h>
 #include <bpf/bpf_endian.h>
-
-// ... rest of your code
 
 // Define the port to drop (default to 4040)
 #ifndef DROP_PORT
@@ -46,7 +44,7 @@ int drop_tcp_port(struct xdp_md *ctx) {
         return XDP_PASS;
     }
 
-    // Get destination port (in host byte order for comparison)
+    // Get destination port 
     __u16 dest_port = bpf_ntohs(tcp->dest);
 
     // Drop if the destination port matches
